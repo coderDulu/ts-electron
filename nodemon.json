@@ -1,0 +1,13 @@
+{
+  "watch": [
+    "main.ts",
+    "main/*"
+  ],
+  "env": {
+    "NODE_ENV": "development"
+  },
+  "ignore": [
+    "package.json",
+    "nodemon.json"
+  ]
+}
