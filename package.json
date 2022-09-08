@@ -30,7 +30,7 @@
   },
   "scripts": {
     "start": "concurrently --kill-others \"set BROWSER=none&& react-scripts start\" \"npm run start:electron\"",
-    "build": "react-scripts build && npm run ele:pack",
+    "build": "react-scripts build && npm run build:main && npm run ele:pack",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "start:electron": "npx nodemon -x npm run start-electron",
