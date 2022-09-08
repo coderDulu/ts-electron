@@ -45,7 +45,8 @@
       "dist/**/*",
       "build/**/*",
       "main.js",
-      "package.json"
+      "package.json",
+      "main/*"
     ],
     "directories": {
       "buildResources": "public"
