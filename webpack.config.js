@@ -94,7 +94,7 @@ module.exports = {
   devServer: {
     host: 'localhost',
     port: 3000,
-    open: true,
+    open: false,
     historyApiFallback: true, // 解决前端路由刷新404问题
     compress: false,
     hot: true,

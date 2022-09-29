@@ -3,19 +3,31 @@
   "version": "1.0.0",
   "description": "",
   "main": "main.js",
-  "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server -c webpack.config.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/coderDulu/react-ts-electron.git"
-  },
   "author": "dudulu",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/coderDulu/react-ts-electron/issues"
+  "scripts": {
+    "start": "cross-env NODE_ENV=development webpack-dev-server -c webpack.config.js",
+    "dev:electron": "npx nodemon -x npm run start-electron",
+    "build": "react-scripts build && npm run build:main && npm run ele:pack",
+    "start-electron": "npm run build:main && npx electron .",
+    "build:main": "npx webpack --config ./webpack.main.config.js",
+    "ele:pack": "electron-builder"
   },
-  "homepage": "https://github.com/coderDulu/react-ts-electron#readme",
+  "build": {
+    "productName": "example",
+    "appId": "com.example.server",
+    "files": [
+      "dist/**/*",
+      "build/**/*",
+      "main.js",
+      "package.json",
+      "main/*"
+    ],
+    "directories": {
+      "buildResources": "public"
+    },
+    "extends": null
+  },
   "devDependencies": {
     "@babel/core": "^7.19.3",
     "@babel/preset-react": "^7.18.6",
@@ -36,6 +48,7 @@
   },
   "dependencies": {
     "copy-webpack-plugin": "^11.0.0",
+    "electron-is-dev": "^2.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
