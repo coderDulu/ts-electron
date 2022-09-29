@@ -113,8 +113,8 @@ module.exports = {
     new CopyPlugin({
       patterns: [
         {
-          from: path.resolve(__dirname, "../public"),
-          to: path.resolve(__dirname, "../dist"),
+          from: path.resolve(__dirname, "./public"),
+          to: path.resolve(__dirname, "./dist"),
           toType: "dir",
           noErrorOnMissing: true, // 不生成错误
           globOptions: {
