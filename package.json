@@ -1,85 +1,42 @@
 {
-  "name": "demo01",
-  "version": "0.1.0",
+  "name": "react-ts-electron",
+  "version": "1.0.0",
+  "description": "",
   "main": "main.js",
-  "private": true,
-  "description": "react electron",
-  "author": "hello",
-  "homepage": ".",
-  "dependencies": {
-    "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.11.56",
-    "@types/react": "^18.0.18",
-    "@types/react-dom": "^18.0.6",
-    "css-loader": "^6.7.1",
-    "electron-is-dev": "^2.0.0",
-    "electron-squirrel-startup": "^1.0.0",
-    "less-loader": "^11.0.0",
-    "postcss-loader": "^7.0.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-scripts": "5.0.1",
-    "sass-loader": "^13.0.2",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.3.1",
-    "typescript": "^4.8.2",
-    "web-vitals": "^2.1.4"
-  },
   "scripts": {
-    "start": "concurrently --kill-others \"set BROWSER=none&& react-scripts start\" \"npm run start:electron\"",
-    "build": "react-scripts build && npm run build:main && npm run ele:pack",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "start:electron": "npx nodemon -x npm run start-electron",
-    "start-electron": "npm run build:main && npx electron .",
-    "build:main": "npx webpack --config ./webpack.main.config.js",
-    "ele:pack": "electron-builder"
+    "start": "cross-env NODE_ENV=development webpack-dev-server -c webpack.config.js"
   },
-  "build": {
-    "productName": "example",
-    "appId": "com.example.server",
-    "files": [
-      "dist/**/*",
-      "build/**/*",
-      "main.js",
-      "package.json",
-      "main/*"
-    ],
-    "directories": {
-      "buildResources": "public"
-    },
-    "extends": null
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/coderDulu/react-ts-electron.git"
   },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
+  "author": "dudulu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/coderDulu/react-ts-electron/issues"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
+  "homepage": "https://github.com/coderDulu/react-ts-electron#readme",
   "devDependencies": {
-    "@babel/core": "^7.18.13",
-    "@babel/preset-env": "^7.18.10",
-    "@electron/remote": "^2.0.8",
+    "@babel/core": "^7.19.3",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.7",
+    "@types/react": "^18.0.21",
+    "@types/react-dom": "^18.0.6",
     "babel-loader": "^8.2.5",
-    "concurrently": "^7.3.0",
-    "electron": "^20.1.1",
-    "url": "^0.11.0",
+    "cross-env": "^7.0.3",
+    "css-minimizer-webpack-plugin": "^4.1.0",
+    "html-webpack-plugin": "^5.5.0",
+    "mini-css-extract-plugin": "^2.6.1",
+    "react-refresh": "^0.14.0",
+    "terser-webpack-plugin": "^5.3.6",
+    "webpack": "^5.74.0",
     "webpack-cli": "^4.10.0",
-    "webpack-node-externals": "^3.0.0"
+    "webpack-dev-server": "^4.11.1"
+  },
+  "dependencies": {
+    "copy-webpack-plugin": "^11.0.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
   }
 }
