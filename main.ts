@@ -26,7 +26,7 @@ function createWindow() {
     mainWindow.loadURL('http://localhost:3000');
     mainWindow.webContents.openDevTools();
   } else {
-    let startUrl = new URL(path.resolve(__dirname, './build/index.html'));
+    let startUrl = new URL(path.resolve(__dirname, './dist/index.html'));
     startUrl.protocol = 'file:';
     mainWindow.loadURL(startUrl.href);
   }
