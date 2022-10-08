@@ -1,7 +1,7 @@
 const path = require('path');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const TerserPlugin = require("terser-webpack-plugin");  
-const HtmlWebpackPlugin = require('html-webpack-plugin'); 
+const TerserPlugin = require("terser-webpack-plugin");
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CopyPlugin = require("copy-webpack-plugin");  // 复制
 const ReactRefreshWebpackPlugin = require("@pmmmwh/react-refresh-webpack-plugin"); // react热更新
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin')  // 压缩css
@@ -43,51 +43,54 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.(tsx|ts)$/,
-        include: path.resolve(__dirname, './src'),
-        loader: 'babel-loader',
-        
-        options: {
-          presets: [
-            '@babel/preset-react',
-            '@babel/preset-typescript'
-          ],
-          // 开启缓存
-          cacheDirectory: true,
-          // 关闭压缩
-          cacheCompression: false,
-          plugins: [
-            "react-refresh/babel", // 开启js的HMR功能
-          ].filter(Boolean),
-        }
-      },
-      {
-        test: /\.css$/,
-        use: handleCssLoaders()
-      },
-      {
-        test: /\.less$/,
-        use: handleCssLoaders('less-loader')
-      },
-      {
-        test: /\.s[ac]ss$/,
-        use: handleCssLoaders('sass-loader')
-      },
-      // 处理图片
-      {
-        test: /\.(jpe?g|png|gif|webp|svg)$/,
-        type: "asset",
-        parser: {
-          // 将图片资源转为base64
-          dataUrlCondition: {
-            maxSize: 10 * 1024
+        oneOf: [
+          {
+            test: /\.(tsx|ts)$/,
+            include: path.resolve(__dirname, './src'),
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                '@babel/preset-react',
+                '@babel/preset-typescript'
+              ],
+              // 开启缓存
+              cacheDirectory: true,
+              // 关闭压缩
+              cacheCompression: false,
+              plugins: [
+                !isProduction && "react-refresh/babel", // 开启js的HMR功能
+              ].filter(Boolean),
+            }
+          },
+          {
+            test: /\.css$/,
+            use: handleCssLoaders()
+          },
+          {
+            test: /\.less$/,
+            use: handleCssLoaders('less-loader')
+          },
+          {
+            test: /\.s[ac]ss$/,
+            use: handleCssLoaders('sass-loader')
+          },
+          // 处理图片
+          {
+            test: /\.(jpe?g|png|gif|webp|svg)$/,
+            type: "asset",
+            parser: {
+              // 将图片资源转为base64
+              dataUrlCondition: {
+                maxSize: 10 * 1024
+              }
+            }
+          },
+          // 处理其他资源
+          {
+            test: /\.(woff2?|ttf)$/,
+            type: "asset/resource"
           }
-        }
-      },
-      // 处理其他资源
-      {
-        test: /\.(woff2?|ttf)$/,
-        type: "asset/resource"
+        ]
       }
     ]
   },
@@ -141,5 +144,9 @@ module.exports = {
   },
   cache: {
     type: 'filesystem',
+    buildDependencies: {
+      // 推荐在 webpack 配置中设置 cache.buildDependencies.config: [__filename] 来获取最新配置以及所有依赖项
+      config: [__filename]
+    }
   }
 }
