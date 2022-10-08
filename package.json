@@ -25,7 +25,8 @@
       "main/*"
     ],
     "directories": {
-      "buildResources": "public"
+      "buildResources": "public",
+      "output": "release"
     },
     "extends": null
   },
