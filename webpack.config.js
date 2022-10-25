@@ -25,6 +25,7 @@ const handleCssLoaders = (loader) => {
   ].filter(Boolean)
 }
 
+// console.log(isProduction);
 module.exports = {
   target: 'web',
   mode: isProduction ? 'production' : 'development',
@@ -41,58 +42,52 @@ module.exports = {
     clean: true,
   },
   module: {
-    rules: [
-      {
-        oneOf: [
-          {
-            test: /\.(tsx|ts)$/,
-            include: path.resolve(__dirname, './src'),
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                '@babel/preset-react',
-                '@babel/preset-typescript'
-              ],
-              // 开启缓存
-              cacheDirectory: true,
-              // 关闭压缩
-              cacheCompression: false,
-              plugins: [
-                !isProduction && "react-refresh/babel", // 开启js的HMR功能
-              ].filter(Boolean),
-            }
-          },
-          {
-            test: /\.css$/,
-            use: handleCssLoaders()
-          },
-          {
-            test: /\.less$/,
-            use: handleCssLoaders('less-loader')
-          },
-          {
-            test: /\.s[ac]ss$/,
-            use: handleCssLoaders('sass-loader')
-          },
-          // 处理图片
-          {
-            test: /\.(jpe?g|png|gif|webp|svg)$/,
-            type: "asset",
-            parser: {
-              // 将图片资源转为base64
-              dataUrlCondition: {
-                maxSize: 10 * 1024
-              }
-            }
-          },
-          // 处理其他资源
-          {
-            test: /\.(woff2?|ttf)$/,
-            type: "asset/resource"
+    rules: [{
+      oneOf: [
+        {
+          test: /\.(tsx|ts)$/,
+          include: path.resolve(__dirname, './src'),
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              '@babel/preset-react',
+              '@babel/preset-typescript'
+            ],
+            // 开启缓存
+            cacheDirectory: true,
+            // 关闭压缩
+            cacheCompression: false,
+            plugins: [
+              !isProduction && "react-refresh/babel", // 开启js的HMR功能
+            ].filter(Boolean),
           }
-        ]
-      }
-    ]
+        },
+        {
+          test: /\.css$/,
+          use: handleCssLoaders()
+        },
+        {
+          test: /\.less$/,
+          use: handleCssLoaders('less-loader')
+        },
+        // 处理图片
+        {
+          test: /\.(jpe?g|png|gif|webp|svg)$/,
+          type: "asset",
+          parser: {
+            // 将图片资源转为base64
+            dataUrlCondition: {
+              maxSize: 10 * 1024
+            }
+          }
+        },
+        // 处理其他资源
+        {
+          test: /\.(woff2?|ttf)$/,
+          type: "asset/resource"
+        }
+      ]
+    }]
   },
   devServer: {
     host: 'localhost',
@@ -132,7 +127,8 @@ module.exports = {
       ],
     }),
     !isProduction && new ReactRefreshWebpackPlugin(), // 解决js的HMR功能运行时全局变量的问题
-  ],
+    new MiniCssExtractPlugin(),
+  ].filter(Boolean),
   optimization: {
     minimize: isProduction,
     minimizer: [
@@ -142,11 +138,11 @@ module.exports = {
       isProduction && new CssMinimizerPlugin()
     ].filter(Boolean),
   },
-  cache: {
-    type: 'filesystem',
-    buildDependencies: {
-      // 推荐在 webpack 配置中设置 cache.buildDependencies.config: [__filename] 来获取最新配置以及所有依赖项
-      config: [__filename]
-    }
-  }
+  // cache: {
+  //   type: 'filesystem',
+  //   buildDependencies: {
+  //     // 推荐在 webpack 配置中设置 cache.buildDependencies.config: [__filename] 来获取最新配置以及所有依赖项
+  //     config: [__filename]
+  //   }
+  // }
 }
