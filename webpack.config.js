@@ -27,7 +27,7 @@ const handleCssLoaders = (loader) => {
 
 // console.log(isProduction);
 module.exports = {
-  target: 'web',
+  target: 'electron-renderer',
   mode: isProduction ? 'production' : 'development',
   devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
   entry: './src/index.tsx',
