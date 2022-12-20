@@ -25,9 +25,8 @@ const handleCssLoaders = (loader) => {
   ].filter(Boolean)
 }
 
-// console.log(isProduction);
 module.exports = {
-  target: 'electron-renderer',
+  target: 'web',
   mode: isProduction ? 'production' : 'development',
   devtool: isProduction ? 'source-map' : 'cheap-module-source-map',
   entry: './src/index.tsx',
@@ -40,12 +39,14 @@ module.exports = {
     // 资源文件
     assetModuleFilename: 'static/media/[hash:10][ext][query]',
     clean: true,
+    // 解决路由跳转，资源路径问题
+    publicPath: isProduction ? undefined : '/'
   },
   module: {
     rules: [{
       oneOf: [
         {
-          test: /\.(tsx|ts|js)$/,
+          test: /\.(tsx|ts)$/,
           include: path.resolve(__dirname, './src'),
           loader: 'babel-loader',
           options: {
@@ -94,8 +95,18 @@ module.exports = {
     port: 3000,
     open: false,
     historyApiFallback: true, // 解决前端路由刷新404问题
+   /*  static: {
+      directory: path.resolve(__dirname, 'static'),
+      publicPath: '/'
+    }, */
     compress: false,
     hot: true,
+  /*   proxy: {
+      '/api': {
+        target: 'http://172.16.3.178/cgi-bin/web.fcgi',
+        pathRewrite: {'^/api': ''}
+      }
+    } */
   },
   resolve: {
     alias: {
@@ -137,6 +148,10 @@ module.exports = {
       }),
       isProduction && new CssMinimizerPlugin()
     ].filter(Boolean),
+    // 将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk
+    splitChunks: {
+      chunks: 'all'
+    }
   },
   // cache: {
   //   type: 'filesystem',
