@@ -29,7 +29,12 @@
       "buildResources": "public",
       "output": "release"
     },
-    "extends": null
+    "extends": null,
+    "linux": {
+      "target": [
+        "deb"
+      ]
+    }
   },
   "devDependencies": {
     "@babel/core": "^7.19.3",
