@@ -6,13 +6,14 @@
   "author": "dudulu",
   "license": "ISC",
   "scripts": {
-    "start": "cross-env NODE_ENV=development webpack-dev-server -c webpack.config.js",
+    "start": "webpack-dev-server -c webpack.config.js ",
     "dev:electron": "npx nodemon -x npm run start-electron",
-    "build": "npm run build:render && npm run build:main && npm run ele:pack",
-    "build:render": "cross-env NODE_ENV=production && npx webpack --config webpack.config.js",
     "start-electron": "npm run build:main && npx electron .",
+    "build": "npm run build:render && npm run build:main && npm run ele:pack",
+    "build:render": "cross-env NODE_ENV=production npx webpack --config webpack.config.js",
     "build:main": "npx webpack --config ./webpack.main.config.js",
-    "ele:pack": "electron-builder"
+    "ele:pack": "electron-builder",
+    "build:linux": "electron-builder --linux"
   },
   "build": {
     "productName": "example",
