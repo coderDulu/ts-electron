@@ -1,12 +1,19 @@
-import { app, BrowserWindow } from 'electron'
-import isDev from 'electron-is-dev'
+/**
+ * main文件夹：
+ *  client_tcp.ts => net连接
+ *  listen.ts => 监听函数设置
+ *  menu.js => 菜单管理
+ *  preload.js => 预加载文件，用于沟通渲染进程与主进程
+ */
+import { app, BrowserWindow } from 'electron';
+// import isDev from 'electron-is-dev';
 import path from 'path';
 import createMenu from './main/menu';
 import listen from './main/listen';
 
 // 定义变量
 let mainWindow: BrowserWindow | null = null;
-
+const isDev = !app.isPackaged;  // 当前运行是否为打包状态
 
 // 新建窗口
 function createWindow() {
