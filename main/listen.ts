@@ -1,4 +1,5 @@
-import { BrowserWindow, dialog, ipcMain } from 'electron'
+import { BrowserWindow, dialog, ipcMain, IpcMainEvent } from 'electron'
+import { showDialog } from './utils';
 
 // 渲染器进程 -> 主进程
 const onEvent = {
@@ -9,20 +10,22 @@ const onEvent = {
   },
   'counter-value': (event, value) => {
     console.log('main -> ', value);
+  },
+  'open-dev': (e: IpcMainEvent) => {
+    if (e.sender.isDevToolsOpened()) {
+      e.sender.closeDevTools();
+    } else {
+      e.sender.openDevTools();
+    }
   }
 }
 
 // 双向
 const onHandle = {
   'dialog:openFile': async () => {
-    const { canceled, filePaths } = await dialog.showOpenDialog()
-    if(canceled) {
-      return
-    } else {
-      return filePaths[0]
-    }
+    return showDialog();
   },
-  
+
 }
 
 export default function listen() {

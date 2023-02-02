@@ -61,7 +61,7 @@
     "less-loader": "^11.1.0",
     "postcss-loader": "^7.0.2",
     "style-loader": "^3.3.1",
-     "webpack-node-externals": "^3.0.0",
+    "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
     "react": "^18.2.0",
