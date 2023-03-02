@@ -6,6 +6,6 @@ git clone https://github.com/coderDulu/react-ts-electron.git
 ## 使用
 #### npm i 
 
-#### npm run start
+#### 启动渲染进程： npm run start
 
-#### npm run dev:electron
+#### 启动主进程：npm run dev:electron
