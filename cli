@@ -1,0 +1,29 @@
+#!/bin/bash
+# 运行
+function start() {
+  # source .env.development
+
+  # 启动Vite
+  npx vite &
+
+  # 启动Electron
+  npx nodemon
+}
+
+# 构建
+function build() {
+  # 将项目打包
+  npm-run-all build:renderer build:main
+
+  # # 打包成对应平台的可执行文件
+  if [ "$1" != "" ];then
+    npx electron-builder --$1 --config
+  fi
+    
+}
+
+if [ "$1" = "start" ]; then
+  start
+elif [ "$1" = "build" ]; then
+  build "$2"
+fi

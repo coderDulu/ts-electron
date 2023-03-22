@@ -1,0 +1,39 @@
+{
+  "name": "react-ts-electron",
+  "private": true,
+  "version": "0.0.0",
+  "main": "./out/main/main.js",
+  "scripts": {
+    "start": "bash cli start",
+    "build": "bash cli build",
+    "dev": "vite",
+    "dev:main": "npm run build:main && npx electron .",
+    "build:renderer": "tsc && vite build",
+    "build:main": "vite build -c vite.main.config.ts",
+    "build:win": "bash cli build win",
+    "build:mac": "bash cli build mac",
+    "build:linux": "bash cli build linux",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@electron/notarize": "^1.2.3",
+    "@types/crypto-js": "^4.1.1",
+    "@types/react": "^18.0.28",
+    "@types/react-dom": "^18.0.11",
+    "@vitejs/plugin-react": "^3.1.0",
+    "crypto-js": "^4.1.1",
+    "dotenv": "^16.0.3",
+    "electron": "^12.2.3",
+    "electron-builder": "^23.6.0",
+    "less": "^4.1.3",
+    "nodemon": "^2.0.21",
+    "npm-run-all": "^4.1.5",
+    "path": "^0.12.7",
+    "typescript": "^4.9.3",
+    "vite": "^4.2.0"
+  }
+}
