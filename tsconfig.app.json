@@ -1,0 +1,12 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["env.d.ts", "src/renderer**/*", "src/renderer/**/*.vue", "node_modules/ant-design-vue/typings/global.d.ts"],
+  "exclude": ["src/renderer/**/__tests__/*"],
+  "compilerOptions": {
+    "composite": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/renderer/*"]
+    }
+  }
+}
