@@ -2,9 +2,9 @@
 
 ## 使用步骤
 
-### 1. git clone https://github.com/coderDulu/react-ts-electron.git
+### 1. git clone https://github.com/coderDulu/ts-electron.git
 
-### 2. cd react-ts-electron 
+### 2. cd ts-electron 
 
 ### 3. pnpm install / npm install / yarn
 
