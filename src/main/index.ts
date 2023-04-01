@@ -27,7 +27,8 @@ async function createWindow() {
       nodeIntegration: false,     // 不允许在渲染进程中使用nodejs Api
       contextIsolation: true,     // 开启上下文隔离，通过preload进行通信
     },
-    show: false
+    show: false,
+
   })
 
   // 加载react

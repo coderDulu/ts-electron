@@ -5,7 +5,7 @@ import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 import { resolve } from 'node:path'
 
 // https://vitejs.dev/config/
-export default defineConfig(({ command, mode }) => {
+export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd());
 
   return {
@@ -22,7 +22,11 @@ export default defineConfig(({ command, mode }) => {
       alias: {
         '@': resolve('src/renderer/src'),
         '@root': resolve('./'),
-      }
+      },
+      extensions: [".js", ".ts", ".tsx", ".vue"]
+    },
+    server: {
+      port: Number(env.VITE_APP_PORT) || 5173,
     },
     build: {
       rollupOptions: {
