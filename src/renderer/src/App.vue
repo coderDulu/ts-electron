@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import ErrorView from './views/ErrorView.vue';
-import { keyDownListener, addWindowListener } from '@/utils/addResizeListener';
+import { keyDownListener, addWindowListener } from '@/utils/common/addResizeListener';
 import { onMounted, onUnmounted } from 'vue';
 
 onMounted(() => {
