@@ -19,12 +19,9 @@ export default defineConfig(({ mode }) => {
       }),
     ],
     resolve: {
-      alias: [
-        {
-          find: "@",
-          replacement: resolve(__dirname, 'src/renderer/src')
-        }
-      ],
+      alias: {
+        "@": resolve(__dirname, 'src/renderer/src')
+      },
       extensions: [".js", ".ts", ".tsx", ".vue"]
     },
     server: {

@@ -2,7 +2,7 @@
   "extends": "@vue/tsconfig/tsconfig.web.json",
   "include": [
     "../env.d.ts",
-    "../src/renderer/**/*",
+    "../src/renderer",
     "../node_modules/ant-design-vue/typings/global.d.ts",
     "../src/preload/index.d.ts"
   ],
@@ -12,9 +12,13 @@
   "compilerOptions": {
     "rootDir": "../",
     "composite": true,
+    "baseUrl": "../src/renderer/",
     "paths": {
       "@/*": [
-        "../src/renderer/src/*"
+        "src/*"
+      ],
+      "test/*": [
+        "src/*"
       ]
     },
     "ignoreDeprecations": "5.0"
