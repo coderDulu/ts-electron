@@ -16,9 +16,6 @@
     "paths": {
       "@/*": [
         "src/*"
-      ],
-      "test/*": [
-        "src/*"
       ]
     },
     "ignoreDeprecations": "5.0"

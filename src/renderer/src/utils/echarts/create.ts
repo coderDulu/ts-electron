@@ -1,16 +1,5 @@
-import * as echarts from './echarts.min';
-
-export function debounce(fn, timeout = 1000) {
-  let timer = null;
-
-  return (...args) => {
-    if (timer) clearTimeout(timer);
-
-    timer = setTimeout(() => {
-      fn(...args);
-    }, timeout);
-  };
-}
+// import * as echarts from './echarts.min.js';
+import echarts from './commonEcharts'
 
 /**
  * 添加监听resize
@@ -20,12 +9,13 @@ class AddResize {
 
   constructor() {
     window.addEventListener('resize', () => {
+      console.log('resize');
       this.fns.forEach(fn => fn());
       // console.log(this.fns)
     })
   }
 
-  add(id, callback) {
+  add(id: string, callback: () => void) {
     if(!this.fns.get(id)) {
       this.fns.set(id, callback);
     }
@@ -35,15 +25,16 @@ class AddResize {
     this.fns.clear()
   }
 
-  remove(id) {
+  remove(id: string) {
     this.fns.delete(id);
   }
 }
 
 export const addResize = new AddResize();
 
-export default function createEcharts(id, option) {
+export default function createEcharts(id: string, option: any) {
   const chartDom = document.getElementById(id);
+  
   if(!chartDom) {
     console.error("没有该元素");
     return;
@@ -63,7 +54,7 @@ export default function createEcharts(id, option) {
  * @param item div元素
  * @param callback 回调函数
  */
-export function addResizeObserver(item, callback) {
+export function addResizeObserver(item: Element, callback: (...args: any[]) => void) {
   const resizeObserver = new ResizeObserver((entires) => {
     callback(entires);
   });

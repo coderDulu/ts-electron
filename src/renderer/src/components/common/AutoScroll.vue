@@ -52,7 +52,6 @@ function handleMouseLeave() {
 <style scoped>
 .auto-c {
   width: 100%;
-  height: 100px;
   overflow: hidden;
 }
 </style>

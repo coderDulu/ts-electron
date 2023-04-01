@@ -33,6 +33,9 @@ export default defineConfig(({ mode }) => {
         treeshake: true,
         output: {
           dir: 'out/renderer',
+          manualChunks: {
+            echarts: ['echarts']
+          }
         }
       }
     }
