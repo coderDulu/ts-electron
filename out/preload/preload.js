@@ -1,1 +1,0 @@
-"use strict";const e=require("electron");e.contextBridge.exposeInMainWorld("electronAPI",{openFile:()=>e.ipcRenderer.invoke("dialog:openFile"),openDevTool:()=>e.ipcRenderer.send("open-dev"),removeListener:r=>(r.length&&r.forEach(n=>{e.ipcRenderer.removeAllListeners(n)}),null)});
