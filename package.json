@@ -3,6 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "main": "./out/main/main.js",
+  "esModuleInterop": true,
   "scripts": {
     "start": "bash cli start",
     "build": "bash cli build",

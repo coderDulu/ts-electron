@@ -12,17 +12,19 @@ export default defineConfig(({ mode }) => {
     base: './',
     root: "src/renderer",
     plugins: [
-      vue(), 
+      vue(),
       splitVendorChunkPlugin(),
       Components({
         resolvers: [AntDesignVueResolver()],
       }),
     ],
     resolve: {
-      alias: {
-        '@': resolve('src/renderer/src'),
-        '@root': resolve('./'),
-      },
+      alias: [
+        {
+          find: "@",
+          replacement: resolve(__dirname, 'src/renderer/src')
+        }
+      ],
       extensions: [".js", ".ts", ".tsx", ".vue"]
     },
     server: {

@@ -1,30 +1,38 @@
-/**
- * 添加监听resize
- */
-class AddResize {
-  fns = new Map()
+class AddWindowListener {
+  listener = new Map();
 
-  constructor() {
-    window.addEventListener('resize', () => {
-      this.fns.forEach(fn => fn());
-      // console.log(this.fns)
-    })
-  }
-
-  add(id: string, callback: () => void) {
-    if(!this.fns.get(id)) {
-      this.fns.set(id, callback);
+  add(key: string, callback: (e: any) => void) {
+    if (this.listener.get(key)) {
+      console.log('listener is add');
+    } else {
+      window.addEventListener(key, callback);
+      this.listener.set(key, callback)
     }
   }
 
-  clear() {
-    this.fns.clear()
+  remove(key: string) {
+    this.listener.delete(key);
   }
 
-  remove(id: string) {
-    this.fns.delete(id);
+  clear() {
+    this.listener.forEach((callback, key) => {
+      window.removeEventListener(key, callback);
+    })
+    this.listener.clear();
   }
 }
 
-const addResize = new AddResize();
-export default addResize;
+export const addWindowListener = new AddWindowListener();
+
+
+export function keyDownListener() {
+  addWindowListener.add('keydown', e => {
+    const { code } = e;
+    // f12开发者工具监听
+    if (code === 'F12') {
+      window.electronAPI.openDevTool()
+    } else if (code === 'F5') {
+      location.reload();
+    }
+  })
+}

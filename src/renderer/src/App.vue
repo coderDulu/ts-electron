@@ -1,10 +1,15 @@
 <script setup lang="ts">
-import { useAntd } from './components/hooks/useAntdMsg';
 import ErrorView from './views/ErrorView.vue';
-const { $msg } = useAntd();
+import { keyDownListener, addWindowListener } from '@/utils/addResizeListener';
+import { onMounted, onUnmounted } from 'vue';
 
-$msg.success("欢迎")
+onMounted(() => {
+  keyDownListener()
+})
 
+onUnmounted(() => {
+  addWindowListener.remove("keydown")
+})
 </script>
 
 <template>
