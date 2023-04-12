@@ -15,7 +15,7 @@ const onEvent: any = {
 // 双向
 const onHandle: any = {
   'dialog:openFile': async () => {
-    return showDialog();
+    return showDialog("openDirectory");
   },
 }
 

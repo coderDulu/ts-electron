@@ -11,8 +11,10 @@ declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     AButton: typeof import('ant-design-vue/es')['Button']
     AutoScroll: typeof import('./src/components/common/AutoScroll.vue')['default']
+    CardItem: typeof import('./src/components/common/CardItem.vue')['default']
     InputSend: typeof import('./src/components/common/InputSend.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Topology: typeof import('./src/components/common/echarts/topology/Topology.vue')['default']
   }
 }

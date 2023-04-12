@@ -1,6 +1,6 @@
 import { dialog } from "electron";
-import fs from 'fs';
-import path from 'path';
+import * as fs from 'fs';
+import * as path from 'path';
 
 type propertiesType = "openDirectory" | "openFile" | "multiSelections" | "showHiddenFiles" | "createDirectory" | "promptToCreate" | "noResolveAliases" | "treatPackageAsDirectory" | "dontAddToRecent"
 
@@ -10,7 +10,8 @@ type propertiesType = "openDirectory" | "openFile" | "multiSelections" | "showHi
  * @param {propertiesType} type 窗口类型
  * @returns 
  */
-export async function showDialog(type: propertiesType = 'openDirectory') {
+export async function showDialog(type: propertiesType) {
+  // @ts-ignore
   const { canceled, filePaths } = await dialog.showOpenDialog({ properties: [type] });
   if (canceled) {
     return

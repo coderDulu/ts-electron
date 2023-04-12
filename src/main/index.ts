@@ -2,12 +2,13 @@
  * main文件夹：
  *  client_tcp.ts => net连接
  *  listen.ts => 监听函数设置
- *  menu.js => 菜单管理
+ *  menu => 菜单管理
  *  preload.js => 预加载文件，用于沟通渲染进程与主进程
  */
 import { app, BrowserWindow } from 'electron';
-import path from 'path';
+import * as path from 'path';
 import listen from './listen';
+import './menu';
 import { config } from 'dotenv';
 const env = config({ path: `${process.cwd()}/.env.development` }).parsed; // 读取.env配置文件
 
@@ -23,7 +24,7 @@ async function createWindow() {
     width: 900,
     height: 670,
     webPreferences: {
-      preload: path.join(__dirname, '../preload/preload.js'),
+      preload: path.join(__dirname, '../preload/index.js'),
       nodeIntegration: false,     // 不允许在渲染进程中使用nodejs Api
       contextIsolation: true,     // 开启上下文隔离，通过preload进行通信
     },
