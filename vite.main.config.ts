@@ -18,7 +18,7 @@ export default defineConfig({
         format: 'cjs',
         entryFileNames: '[name]/index.js',
       },
-      external: ['electron', 'path', 'fs', 'ws'],
+      external: ['electron', 'path', 'fs', 'ws'], // 内置node模块和第三方模块
     },
     emptyOutDir: true,
     copyPublicDir: false
