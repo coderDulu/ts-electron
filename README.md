@@ -2,7 +2,7 @@
 
 ## 使用步骤
 
-### 1. git clone url
+### 1. git clone
 
 ### 2. cd ts-electron 
 
