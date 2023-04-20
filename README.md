@@ -2,13 +2,9 @@
 
 ## 使用步骤
 
-### 1. git clone
+### 1. 下载依赖：npm run install
 
-### 2. cd ts-electron 
-
-### 3. 下载依赖：npm run install
-
-### 4. 启动程序：npm start
+### 2. 启动程序：npm start
 
 ## 配置 .env.development 环境变量
 ```sh
