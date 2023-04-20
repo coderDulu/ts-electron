@@ -1,4 +1,5 @@
-import { BrowserWindow, ipcMain, IpcMainEvent } from 'electron'
+import { ipcMain } from 'electron'
+import type { IpcMainEvent } from 'electron' 
 import { showDialog } from './utils';
 
 // 渲染器进程 -> 主进程

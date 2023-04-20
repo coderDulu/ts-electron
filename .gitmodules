@@ -1,0 +1,3 @@
+[submodule "src/renderer"]
+	path = src/renderer
+	url = http://int.wavenovo.com:6060/jiang.feng/vue_ts.git

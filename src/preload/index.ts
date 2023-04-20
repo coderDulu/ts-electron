@@ -1,5 +1,4 @@
 import { contextBridge, ipcRenderer } from 'electron'
-// console.log(object);
 contextBridge.exposeInMainWorld('electronAPI', {
   openFile: () => ipcRenderer.invoke('dialog:openFile'),
 

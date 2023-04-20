@@ -2,5 +2,5 @@
   "watch": ["src/main/**", "src/preload/**"],
   "ext": "js,json,ts",
   "ignore": ["node_modules"],
-  "exec": "pnpm dev:main"
+  "exec": "npm run dev:main"
 }

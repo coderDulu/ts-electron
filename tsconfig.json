@@ -1,11 +1,18 @@
 {
-  "files": [],
-  "references": [
-    {
-      "path": "./config/tsconfig.node.json"
+  "extends":[ "@vue/tsconfig/tsconfig.web.json", "./src/renderer/tsconfig.json", "@vue/tsconfig/tsconfig.node.json"],
+  "include": [
+    "env.d.ts",
+    "src/renderer",
+    "node_modules/ant-design-vue/typings/global.d.ts",
+    "src/preload/index.d.ts",
+    "src/main"
+  ],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "composite": true,
+    "paths": {
+      "@/*": [ "src/*" ],
     },
-    {
-      "path": "./config/tsconfig.app.json"
-    }
-  ]
+    "ignoreDeprecations": "5.0"
+  }
 }

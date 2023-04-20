@@ -6,9 +6,9 @@
 
 ### 2. cd ts-electron 
 
-### 3. pnpm install / npm install / yarn
+### 3. 下载依赖：npm run install
 
-### 4. pnpm start / npm run start / yarn start
+### 4. 启动程序：npm start
 
 ## 配置 .env.development 环境变量
 ```sh
