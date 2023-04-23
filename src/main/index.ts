@@ -6,15 +6,14 @@
  *  preload.js => 预加载文件，用于沟通渲染进程与主进程
  */
 import { app, BrowserWindow } from 'electron';
-import * as path from 'path';
+import path from 'path';
 import listen from './listen';
 import './menu';
-import { config } from 'dotenv';
-const env = config({ path: `${process.cwd()}/.env.development` }).parsed; // 读取.env配置文件
 
 // 定义变量
 let mainWindow: BrowserWindow | null = null;
 const isDev = !app.isPackaged;  // 当前运行是否为打包状态
+console.log('%c [ isDev ]-16', 'font-size:13px; background:pink; color:#bf2c9f;', isDev)
 
 
 
@@ -34,12 +33,11 @@ async function createWindow() {
 
   // 加载react
   // 打开开发者工具
-  if (isDev) {
-    mainWindow.loadURL(env ? env.VITE_APP_URL : "http://localhost:5173");
+  if (process.env.VITE_DEV_SERVER_URL) {
+    mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
     // 打开开发者工具
     mainWindow?.webContents.openDevTools();
   } else {
-    console.log(path.join(__dirname, '../renderer/index.html'));
     mainWindow.loadFile(path.join(__dirname, '../renderer/index.html'))
   }
 

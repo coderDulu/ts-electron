@@ -1,24 +1,25 @@
 #!/bin/bash
-# 运行
+# 运行开发环境
 function start() {
   # source .env.development
 
   # 启动Vite
-  npx vite &
+  npx vite
 
-  # 启动Electron
-  npx nodemon
+  # # 启动Electron
+  # npx nodemon
 }
 
 # dev编译main
 function dev() {
-  echoLog "start compile main"
+  echoLog "start compile"
   # 删除上一次的文件内容
   rm -rf out
   # 打包main
   # tsc -p ./config/tsconfig.main.json src/main/index.ts  --outDir out/main --resolveJsonModule true && tsc src/preload/index.ts --outDir out/preload
-  npx vite build -c vite.main.config.ts
-  echoLog "compile complete main"
+  # npx vite build -c vite.main.config.ts
+  npx vite build
+  echoLog "end compile"
 }
 
 # 
@@ -27,11 +28,12 @@ function echoLog() {
 }
 # 构建
 function build() {
+  # 打包
   dev
 
-  # 打包renderer
-  npm-run-all build:renderer
-  echo "Compile complete renderer"
+  # # 打包renderer
+  # npm-run-all build:renderer
+  # echo "Compile complete renderer"
   # 打包成对应平台的可执行文件
   if [ "$1" != "" ]; then
     echo "start builder"
