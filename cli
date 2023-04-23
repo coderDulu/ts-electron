@@ -14,7 +14,7 @@ function start() {
 function dev() {
   echoLog "start compile"
   # 删除上一次的文件内容
-  rm -rf out
+  # rm -rf out
   # 打包main
   # tsc -p ./config/tsconfig.main.json src/main/index.ts  --outDir out/main --resolveJsonModule true && tsc src/preload/index.ts --outDir out/preload
   # npx vite build -c vite.main.config.ts
@@ -38,6 +38,8 @@ function build() {
   if [ "$1" != "" ]; then
     echo "start builder"
     npx electron-builder --$1 --config
+  else
+    npx electron-builder --win --config
   fi
 }
 

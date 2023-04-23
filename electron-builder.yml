@@ -13,6 +13,7 @@ asarUnpack:
   - resources/*
 afterSign: build/notarize.js
 win:
+  icon: ./build/icon.ico
   executableName: electron-app
 nsis:
   artifactName: ${name}-${version}-setup.${ext}

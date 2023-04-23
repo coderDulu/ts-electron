@@ -20,8 +20,8 @@ console.log('%c [ isDev ]-16', 'font-size:13px; background:pink; color:#bf2c9f;'
 // 新建窗口
 async function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 900,
-    height: 670,
+    width: 1000,
+    height: 800,
     webPreferences: {
       preload: path.join(__dirname, '../preload/index.js'),
       nodeIntegration: false,     // 不允许在渲染进程中使用nodejs Api
