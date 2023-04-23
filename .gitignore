@@ -30,4 +30,3 @@ coverage
 *.tsbuildinfo
 dist
 out
-/build
