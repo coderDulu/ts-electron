@@ -13,7 +13,6 @@ import './menu';
 // 定义变量
 let mainWindow: BrowserWindow | null = null;
 const isDev = !app.isPackaged;  // 当前运行是否为打包状态
-console.log('%c [ isDev ]-16', 'font-size:13px; background:pink; color:#bf2c9f;', isDev)
 
 process.env['ELECTRON_DISABLE_SECURITY_WARNINGS']="true"  // 关闭警告
 
