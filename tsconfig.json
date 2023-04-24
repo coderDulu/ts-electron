@@ -4,7 +4,8 @@
     "env.d.ts",
     "src/renderer",
     "src/preload/index.d.ts",
-    "src/main"
+    "src/main",
+    "src/renderer/components.d.ts"
   ],
   "compilerOptions": {
     "baseUrl": ".",

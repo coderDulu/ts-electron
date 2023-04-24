@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "src/main"
+		},
+		{
+			"path": "src/preload"
+		},
+		{
+			"path": "src/renderer"
+		}
+	],
+	"settings": {}
+}
